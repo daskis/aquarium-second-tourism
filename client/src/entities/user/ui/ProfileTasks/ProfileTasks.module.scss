@@ -1,0 +1,119 @@
+.wrapper {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & h3 {
+    margin: 0;
+    padding: 0;
+
+  }
+}
+
+.moreTasks {
+  cursor: pointer;
+  padding: 5px 20px;
+  border-radius: 30px;
+  background-color: var(--primary);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  margin-left: auto;
+  transition: .3s all ease;
+  font-weight: 900;
+
+    & span {
+      color: var(--white) !important;
+
+    }
+
+  &:hover {
+    filter: brightness(90%);
+  }
+
+  &:active {
+    filter: brightness(80%);
+  }
+}
+
+.task {
+  margin-top: 10px;
+  width: 80%;
+  height: 200px;
+  position: relative;
+  border-radius: var(--border-radius-1);
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .name {
+    z-index: 20;
+    color: var(--white) !important;
+  }
+
+  & img {
+    border-radius: var(--border-radius-1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &Info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .time {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+
+    & svg {
+      color: var(--white);
+    }
+
+    & span {
+      font-weight: 700;
+      color: var(--white) !important;
+    }
+  }
+
+  .coins {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 20;
+    border-radius: 30px;
+    padding: 5px 10px;
+    background-color: var(--progress);
+
+    & span {
+      color: var(--white) !important;
+    }
+  }
+
+  &:hover {
+    filter: brightness(90%);
+  }
+
+  &:active {
+    filter: brightness(80%);
+  }
+}

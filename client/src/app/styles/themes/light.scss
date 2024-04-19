@@ -1,14 +1,31 @@
 .app.light {
-  --primary: #722ed1;
-  --secondary: #0958d9;
+  --primary: #F8897A;
+  --primary-hover: #0958d9;
+  --primary-active: #003eb3;
+
+
+  --secondary: #000;
+  --text: #141414;
+  --text-invert: #fff;
+
 
   --link: #1677ff;
   --error: #f5222d;
 
   --bg: #ffffff;
-  --bg-light: #f0f0f0;
+  --bg-light: #FCE5ED;
+
+
+  --toolbar-bg: #9DE8ED;
+
+  --gray: #8c8c8c;
 
 
   --white: #ffffff;
-  --black: #000000;
+  --black: #141414;
+  --black-hover: #1f1f1f;
+  --black-active: #141414;
+
+
+  --progress: #9DE8ED;
 }

@@ -1,0 +1,96 @@
+h2 {
+  text-align: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-light);
+}
+
+
+.body {
+  padding: 40px;
+  border-radius: var(--border-radius-1);
+  background-color: var(--bg);
+  max-height: 80vh;
+  max-width: 95vw;
+  width: 100%;
+  height: 100%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+
+  & input {
+    background-color: var(--bg) !important;
+    color: var(--text);
+  }
+}
+
+.button {
+
+  &Yandex {
+    transition: 0.3s all ease;
+    background-color: var(--black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--black-hover) !important;
+    }
+
+    &:active {
+      background-color: var(--black-active) !important;
+    }
+  }
+
+  &Vk {
+    transition: 0.3s all ease;
+    background-color: var(--link);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: var(--primary-hover) !important;
+    }
+
+    &:active {
+      background-color: var(--primary-active) !important;
+    }
+  }
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.more {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+
+  & hr {
+    color: white;
+    height: 1px;
+    width: 35%;
+  }
+}
+
+.register {
+  display: flex;
+  justify-content: center;
+}
