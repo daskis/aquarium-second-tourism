@@ -1,1 +1,2 @@
-export * from "@shared/ui/FloatGroup/FloatGroup.tsx"
+export * from "./FloatGroup/FloatGroup.tsx"
+export * from "./Switch/Switch.tsx"

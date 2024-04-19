@@ -1,0 +1,27 @@
+.wrapper {
+  margin-top: 30px;
+  min-height: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--toolbar-bg);
+  border-radius: 20px;
+  padding: 2px;
+}
+
+.value {
+  cursor: pointer;
+  flex: 1 1 45%;
+  color: var(--text-invert);
+  display: flex;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 13px !important;
+}
+
+.active {
+  background-color: var(--primary) !important;
+  color: var(--text) !important;
+}

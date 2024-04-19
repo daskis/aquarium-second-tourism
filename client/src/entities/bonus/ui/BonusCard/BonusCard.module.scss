@@ -1,0 +1,40 @@
+.wrapper {
+  position: relative !important;
+  padding: 10px;
+  background-color: #F8897A;
+  border-radius: var(--border-radius-1);
+  font-weight: 300 !important;
+  height: 130px;
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  & .title {
+    font-weight: 700 !important;
+    font-size: 12px !important;
+  }
+
+  & .text {
+    font-size: 12px !important;
+  }
+
+  & .price {
+    font-size: 12px !important;
+  }
+
+  & img {
+    transform: scaleX(90%);
+    position: absolute;
+    bottom: 0;
+    right: -5px;
+    left: auto;
+  }
+
+  & h1, span {
+    max-width: 70%;
+    font-weight: 300 !important;
+    margin: 0 !important;
+  }
+
+}

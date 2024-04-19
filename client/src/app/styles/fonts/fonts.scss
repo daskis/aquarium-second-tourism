@@ -49,3 +49,10 @@
   url("@shared/assets/fonts/Gilroy/Gilroy-Regular.woff") format("woff");
   font-weight: 400;
 }
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url("@shared/assets/fonts/Gilroy/Gilroy-Light.ttf") format("ttf"),
+  url("@shared/assets/fonts/Gilroy/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+}
