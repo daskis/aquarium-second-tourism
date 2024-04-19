@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e5834787-f08f-420b-a538-f4c4abb0d097" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.cjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/vite.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/main.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/fonts/fonts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/global.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/reset/reset.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/themes/dark.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/themes/light.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/styles/variables/variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/user/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/features/authSlice.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/features/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/services/authApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/services/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/types/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/lib/types/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/features/auth/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ui/MainPage/MainPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Bold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Medium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Medium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Medium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Regular.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/assets/fonts/Montserrat/Montserrat-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/hooks/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/hooks/useAppDispatch.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/hooks/useAppSelector.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/store/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/store/api/mainApi.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/store/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/store/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/types/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/types/store.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/helpers/classNames.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/helpers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/RouterProvider/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/RouterProvider/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/RouterProvider/ui/RouterProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/RouterProvider/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/lib/ThemeContent.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/lib/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/lib/types/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/lib/useTheme.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/ui/ThemeProvider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/ThemeProvider/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/lib/utils/providers/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/lib/lindex.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/widgets/ui/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.node.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vite.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1713533786" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1713533785" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2fJydWLHGClWphSofLqaecnz8ky" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/daskis/web/aquarium-second-tourism/client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "yarn",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e5834787-f08f-420b-a538-f4c4abb0d097" name="Changes" comment="" />
+      <created>1713533562149</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713533562149</updated>
+      <workItem from="1713533563163" duration="27000" />
+      <workItem from="1713533620544" duration="216000" />
+      <workItem from="1713533843573" duration="198000" />
+      <workItem from="1713534187209" duration="7000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
