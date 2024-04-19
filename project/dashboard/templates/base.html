@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href='{% static "css/base.css" %}'>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="{% url 'dashboard:facility-list' %}">Home</a>
+        <a href="{% url 'dashboard:service-list' pk=1 %}">Home</a>
+        <a href="{% url 'dashboard:base' %}">Home</a>    
+    </div>
+<div class="content">
+    fdsd
+    {% block content %}
+
+    {% endblock %}
+
+</div>
+
+</body>
+</html>

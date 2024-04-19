@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>List of services for {{facility}}</h1>
+    <ul>
+        {% csrf_token %}
+        <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+    {% for facility in service_list %}
+        <li>{{ facility }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}
