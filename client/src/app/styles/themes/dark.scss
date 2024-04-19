@@ -1,14 +1,30 @@
 .app.dark {
-  --primary: #722ed1;
-  --secondary: #0958d9;
+  --primary: #1677ff;
+  --primary-hover: #0958d9;
+  --primary-active: #003eb3;
+  --secondary: #fff;
+
+
+  --text: #fff;
+  --text-invert: #141414;
 
   --link: #1677ff;
   --error: #f5222d;
 
-  --bg: #141414;
+  --bg: #1f1f1f;
   --bg-light: #262626;
 
 
+  --toolbar-bg: #262626;
+
+  --gray: #8c8c8c;
+
   --white: #ffffff;
-  --black: #000000;
+  --black: #141414;
+  --black-hover: #1f1f1f;
+  --black-active: #141414;
+
+
+  --progress: #1677ff;
+
 }
