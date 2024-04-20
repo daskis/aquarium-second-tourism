@@ -17,7 +17,6 @@ class ViewMessageJobs extends Component
 
     public function render()
     {
-
         $jobs = MessageJobs::where('message_id', $this->message_id)->get();
         return view('livewire.view-message-jobs', compact('jobs'));
     }

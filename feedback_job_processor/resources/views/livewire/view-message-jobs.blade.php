@@ -1,7 +1,7 @@
-<div wire:poll.750ms>
+<div clas="my-4" wire:poll.750ms>
     @foreach($jobs as $job)
         @if(!$job->is_send_to_processing && !$job->is_done)
-            <ul class="w-[90%] space-y-2 text-gray-500 list-inside dark:text-gray-400">
+            <ul class="w-[90%] flex space-x-4 space-y-2 text-gray-500 list-inside dark:text-gray-400">
 
                 <li class="flex items-center">
                     <div role="status">
@@ -20,7 +20,7 @@
                 </li>
             </ul>
         @elseif($job->is_send_to_processing && !$job->is_done)
-            <ul class="w-[90%] space-y-2 text-gray-500 list-inside dark:text-gray-400">
+            <ul class="w-[90%] flex space-x-4 space-y-2 text-gray-500 list-inside dark:text-gray-400">
 
                 <li class="flex items-center">
                     <svg class="w-4 h-4 me-2 text-green-500 dark:text-green-400 flex-shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">

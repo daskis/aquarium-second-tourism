@@ -25,9 +25,12 @@ def ProcessTextDB(text, id=1):
 
     if text == "message_loyality_research":
 
+        PROMPT = "Answer as an analyst would answer. Always answer in Russian Language. If you need, you can write HTML code with tailwind for difficult view or bootstrap for usual basics css styles, this code will be rendered for me. Do not use Markdown, LATeX, use only html and text. Always answer using HTML code."
+
         listOfReq = [
-            "Answer as an analyst would answer. Always answer in Russian Language. If you need, you can write HTML code with tailwind for difficult view or bootstrap for usual basics css styles, this code will be rendered for me. Do not use Markdown, LATeX, use only html and text. Always answer using HTML code. Создай таблицу HTML которая будет содержать 20 идей для программы лояльности и включать: номер, название, предпологаемая степень конверсии",
-            'Answer as an analyst would answer. Always answer in Russian Language. If you need, you can write HTML code with tailwind for difficult view or bootstrap for usual basics css styles, this code will be rendered for me. Do not use Markdown, LATeX, use only html and text. Always answer using HTML code. Создай список HTML из возможных кризисов для программы лояльности клиентам турристического приложения в России, Сочи. Под каждым пунктом списка добавь кнопку с белым текстом и черным фоном с данписью: Добавить в базу. У этой кнопки должен быть аргумент wire:click="$set("text", "ТУТ ДОЛЖЕН БЫТЬ ТЕКСТ ИЗ СПИСКА НАД КНОПКОЙ")"',
+            f"{PROMPT} Создай таблицу HTML которая будет содержать 20 идей для программы лояльности и включать: номер, название, предпологаемая степень конверсии",
+            f'{PROMPT} Создай список HTML из возможных кризисов для программы лояльности клиентам турристического приложения в России, Сочи. Под каждым пунктом списка добавь кнопку с белым текстом и черным фоном с данписью: Добавить в базу. У этой кнопки должен быть аргумент wire:click="$set("text", "ТУТ ДОЛЖЕН БЫТЬ ТЕКСТ ИЗ СПИСКА НАД КНОПКОЙ")"',
+            f'{PROMPT} Создай график показывающий динамику востребованности туризма в Сочи, Россия используя примитивы div и style. ',
         ]
 
         connection = mysql.connector.connect(host=db_host,
