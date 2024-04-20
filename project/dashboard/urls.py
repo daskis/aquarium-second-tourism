@@ -29,7 +29,7 @@ urlpatterns = [
     # path('facility-list/', views.FacilityList.as_view(), name='facility-list'),
     # path('service-list/<int:pk>/', views.ServiceList.as_view(), name='service-list'),
     path('api/', include(router.urls)),
-    path('api/images-list', views.ImagesList.as_view(), name='images-list'),
+    path('api/images-list', views.ImagesListView.as_view(), name='images-list'),
 
 
 
