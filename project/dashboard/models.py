@@ -46,14 +46,14 @@ class Facility(models.Model):
 class Travel(models.Model):
     "тур для антона"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
-    reviews = models.ManyToManyField("Review")
+    reviews = models.ManyToManyField("Review", blank=True, null=True)
     facilitys = models.ManyToManyField("Facility", blank=True)
 
 
 class Hostel(models.Model):
     "отели места"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
-    reviews = models.ManyToManyField("Review")
+    reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
     def clean_coordinates(self):
@@ -70,7 +70,7 @@ class Hostel(models.Model):
 class Valley(models.Model):
     "парки"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
-    reviews = models.ManyToManyField("Review")
+    reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
     def clean_coordinates(self):
@@ -87,7 +87,7 @@ class Valley(models.Model):
 class Beach(models.Model):
     "пляжи"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
-    reviews = models.ManyToManyField("Review")
+    reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
     def clean_coordinates(self):
@@ -118,7 +118,7 @@ class Service(models.Model):
 
 
 class Stock(models.Model):
-    services = models.ManyToManyField(Service)
+    services = models.ManyToManyField(Service, blank=True, null=True)
     quantity = models.IntegerField()
     date_added = models.DateField(auto_now_add=True)
     date_expiration = models.DateField(blank=True, null=True)
