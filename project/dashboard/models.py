@@ -12,13 +12,25 @@ class Owner(AbstractUser):
     first_name = models.CharField(max_length=100, blank=True, null=True)
 
 
-
-class Facility(models.Model):
+class General(models.Model):
+    "базовая модель для антона"
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
-    coordinates = models.JSONField(default=dict)
-    rate = models.IntegerField()
+    description = models.TextField()
     img = models.ImageField(upload_to='img/', blank=True, null=True)
+    rating = models.FloatField()
+
+    class Meta:
+        ordering = ['-rating']
+
+    def __str__(self):
+        return self.name
+
+
+class Facility(models.Model):
+    "точка для антона"
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
+    coordinates = models.JSONField(default=dict)
 
     def clean_coordinates(self):
         if self.coordinates and (
@@ -31,37 +43,18 @@ class Facility(models.Model):
             raise ValidationError("out if range for 'longitude'")
 
 
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
 
 
 class Travel(models.Model):
-    name = models.CharField(max_length=100)
-    rate = models.IntegerField()
+    "тур для антона"
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
     date = models.DateField()
-    img = models.ImageField(upload_to='img/', blank=True, null=True)
     facilitys = models.ManyToManyField("Facility", blank=True)
 
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-
 class Event(models.Model):
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     facility = models.ForeignKey("Facility", on_delete=models.CASCADE)
-    owner = models.ForeignKey("Owner", on_delete=models.CASCADE)
-
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
 
 
 class Service(models.Model):
@@ -81,6 +74,7 @@ class Stock(models.Model):
     quantity = models.IntegerField()
     date_added = models.DateField(auto_now_add=True)
     date_expiration = models.DateField(blank=True, null=True)
+
     def clean_expiration(self):
         if self.date_expiration < self.date_added:
             raise ValidationError("Expiration date cannot be earlier than the purchase date")
@@ -88,6 +82,7 @@ class Stock(models.Model):
     def clean_quantity(self):
         if self.quantity < 0:
             raise ValidationError("Quantity cannot be negative")
+
 
 class Consumer(models.Model):
     lastname = models.CharField(max_length=100, blank=True, null=True)
@@ -115,4 +110,11 @@ class Loyality(models.Model):
                                  max_length=100)
     services = models.ManyToManyField(Service)
 
-# Create your models here.
+
+class Review(models.Model):
+    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    text = models.TextField()
+    rate = models.FloatField()
+    date = models.DateField(auto_now_add=True)
+
+# ДУММИ ДАТА

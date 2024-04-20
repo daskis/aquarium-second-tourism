@@ -1,0 +1,31 @@
+.block {
+    width: 95%;
+border: 1px #ccc solid;
+padding: 15px;
+
+border-radius: 5px;
+margin: 0 auto;
+}
+
+.item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding-bottom: 10px;
+
+
+}
+
+.title {
+display: block;
+
+
+}
+
+.value {
+display: block;
+}
+
+.wrapper{
+    margin-bottom: 10%;
+}

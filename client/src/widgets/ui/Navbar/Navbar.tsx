@@ -1,6 +1,5 @@
 import cls from "./Navbar.module.scss"
 import {Input, Typography} from "antd";
-import {Outlet} from "react-router-dom";
 import {CloseOutlined, SearchOutlined, UserOutlined} from "@ant-design/icons";
 import Coin from "@assets/icons/coin.svg";
 

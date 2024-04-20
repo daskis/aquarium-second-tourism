@@ -1,6 +1,6 @@
 .wrapper {
   margin-top: 30px;
-  min-height: 30px;
+  min-height: 40px;
   height: 30px;
   display: flex;
   justify-content: space-between;
@@ -10,9 +10,9 @@
 }
 
 .value {
+  padding: 8px 2px;
   cursor: pointer;
   flex: 1 1 45%;
-  color: var(--text-invert);
   display: flex;
   border-radius: 20px;
   justify-content: center;
@@ -23,5 +23,5 @@
 
 .active {
   background-color: var(--primary) !important;
-  color: var(--text) !important;
+  color: var(--text-invert) !important;
 }

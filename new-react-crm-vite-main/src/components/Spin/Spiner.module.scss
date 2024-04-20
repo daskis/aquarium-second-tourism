@@ -1,0 +1,20 @@
+.spinModal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+  
+    width: 100vw;
+    height: 100vh;
+  
+    top: 0;
+    right: 0;
+  
+    z-index: 10000000;
+  
+    background: #3333332c;
+  
+    & span i{
+      transform: scale(400%);
+    }
+  }
