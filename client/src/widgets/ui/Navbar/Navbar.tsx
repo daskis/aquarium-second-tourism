@@ -2,6 +2,7 @@ import cls from "./Navbar.module.scss"
 import {Input, Typography} from "antd";
 import {CloseOutlined, SearchOutlined, UserOutlined} from "@ant-design/icons";
 import Coin from "@assets/icons/coin.svg";
+import {Link} from "react-router-dom";
 
 export const Navbar = () => {
     return (
@@ -16,9 +17,9 @@ export const Navbar = () => {
                         23
                     </Typography.Text>
                 </div>
-                <div className={cls.avatar}>
+                <Link to="/user" className={cls.avatar}>
                     <UserOutlined/>
-                </div>
+                </Link>
             </div>
         </>
     );

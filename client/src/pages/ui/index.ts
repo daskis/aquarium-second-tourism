@@ -10,3 +10,6 @@ export * from "./PlacePage/PlacePage.tsx"
 
 export * from "./HotelsPage/HotelsPage.tsx"
 export * from "./ToursPage/ToursPage.tsx"
+export * from "./BeachesPage/BeachesPage.tsx"
+export * from "./ParksPage/ParksPage.tsx"
+export * from "./InterestingPage/InterestingPage.tsx"

@@ -5,8 +5,14 @@ export interface IUserInitialState {
 
 
 export interface IAuthRequest {
-    email: string,
+    username: string,
     password: string
 }
-export interface ILoginRequest extends IAuthRequest{}
-export interface IRegisterRequest extends IAuthRequest{}
+
+export interface ILoginRequest extends IAuthRequest {
+}
+
+export interface IRegisterRequest extends IAuthRequest {
+    email: string
+    repeatPassword: string
+}

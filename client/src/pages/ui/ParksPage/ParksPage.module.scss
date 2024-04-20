@@ -1,0 +1,37 @@
+.wrapper {
+  overflow-y: scroll;
+  padding: 80px 20px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .title {
+    margin: 0 !important;
+  }
+
+  & svg {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+
+    & path {
+      transition: .3s all ease;
+
+      fill: var(--primary) !important;
+    }
+
+    &:active path {
+      filter: brightness(80%);
+    }
+
+    &:hover path {
+      filter: brightness(90%);
+    }
+  }
+}

@@ -17,7 +17,6 @@ h2 {
   padding: 40px;
   border-radius: var(--border-radius-1);
   background-color: var(--bg);
-  max-height: 80vh;
   max-width: 95vw;
   width: 100%;
   height: 100%;
@@ -36,12 +35,20 @@ h2 {
 }
 
 .button {
+  & span {
+    color: var(--white) !important;
+  }
+
   &Yandex {
     transition: 0.3s all ease;
     background-color: var(--black);
     display: flex;
     align-items: center;
     justify-content: center;
+
+    & span {
+      color: var(--white) !important;
+    }
 
     &:hover {
       background-color: var(--black-hover) !important;
@@ -58,6 +65,10 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    & span {
+      color: var(--white) !important;
+    }
 
     &:hover {
       background-color: var(--primary-hover) !important;
