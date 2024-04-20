@@ -1,116 +1,90 @@
-from flask import Flask, request
-from feedback import FeedbackDatabase
-from flasgger import Swagger
+from gpt4free import G4FLLM
+from langchain.llms.base import LLM
+from g4f import Provider, models
+import mysql.connector
+from mysql.connector import Error
+import time
 
-app = Flask(__name__)
-swagger = Swagger(app)
+def ProcessTextDB(rate, text, categories):
+    print(f"Processing text: {text}")
+    MSG = f"""
+        Answer as an analyst would answer. I will send you a user review, after reading which you must decide on the numerical indicators for this tourist enterprise. The visitor wrote: '{text}' and rated {rate} out of 5. In the response, return only a numerical indicator from 0.1 to 0.9 separated by a symbol ; showing customer loyalty in the following categories: {categories}. For example: 0.5;0.3;0.7;...
+    """
 
-# Initialize the database
-db = FeedbackDatabase('feedback.db')
 
-@app.route('/feedback', methods=['POST'])
-def create_feedback():
-    """
-    Create a new feedback entry.
-    ---
-    tags:
-      - Feedback
-    parameters:
-      - in: body
-        name: body
-        schema:
-          type: object
-          required:
-            - rate
-            - text
-            - user_uuid
-            - place_id
-          properties:
-            rate:
-              type: integer
-              minimum: 1
-              maximum: 5
-              description: Rate from 1 to 5
-            text:
-              type: string
-              description: Feedback text
-            user_uuid:
-              type: string
-              description: User UUID
-            place_id:
-              type: integer
-              description: Place ID
-    responses:
-      201:
-        description: Feedback created successfully
-    """
-    data = request.json
-    db.create_feedback(data['rate'], data['text'], data['user_uuid'], data['place_id'])
-    return {'message': 'Feedback created successfully'}, 201
+    llm: LLM = G4FLLM(
+        model=models.gpt_35_turbo,
+        # provider=Provider.Aichat,
+    )
 
-@app.route('/feedback/unprocessed', methods=['GET'])
-def get_unprocessed_feedback():
-    """
-    Get the first unprocessed feedback entry.
-    ---
-    tags:
-      - Feedback
-    responses:
-      200:
-        description: A feedback entry that has not been processed.
-        schema:
-          id: Feedback ID
-          type: object
-          properties:
-            rate:
-              type: integer
-              description: Rate from 1 to 5
-            text:
-              type: string
-              description: Feedback text
-            user_uuid:
-              type: string
-              description: User UUID
-            is_processed_by_ai:
-              type: boolean
-              description: Whether the feedback has been processed by AI
-            place_id:
-              type: integer
-              description: Place ID
-      404:
-        description: No unprocessed feedback found.
-    """
-    feedback = db.get_first_unprocessed_feedback()
-    if feedback:
-        return {'feedback': feedback}, 200
-    else:
-        return {'message': 'No unprocessed feedback found'}, 404
+    res = llm(MSG)
+    print("========================")
+    print(categories)
+    print(res)
+    print("========================")
 
-@app.route('/feedback/<int:feedback_id>/process', methods=['PUT'])
-def mark_feedback_as_processed(feedback_id):
-    """
-    Mark a feedback entry as processed.
-    ---
-    tags:
-      - Feedback
-    parameters:
-      - name: feedback_id
-        in: path
-        required: true
-        type: integer
-        description: The ID of the feedback to be marked as processed.
-    responses:
-      200:
-        description: Feedback marked as processed.
-        schema:
-          type: object
-          properties:
-            message:
-              type: string
-              description: Confirmation message of the feedback being processed.
-    """
-    db.mark_feedback_as_processed(feedback_id)
-    return {'message': 'Feedback marked as processed'}, 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
+def getDBData():
+    try:
+        # Establish a database connection
+        connection = mysql.connector.connect(host='localhost',
+                                            database='laravel',
+                                            user='sail',
+                                            password='password')
+        if connection.is_connected():
+            cursor = connection.cursor()
+
+            # Select the first item with is_processed=False and is_sended=False
+            query = ("SELECT rate, text FROM feedback_jobs "
+                    "WHERE is_processed = False AND is_sended = False "
+                    "LIMIT 1")
+            cursor.execute(query)
+
+            # Fetch one record
+            record = cursor.fetchone()
+            if record:
+                rate, text = record
+
+                # Update is_sended to True for the fetched record
+                update_query = ("UPDATE feedback_jobs SET is_sended = True "
+                                "WHERE text = %s")
+                cursor.execute(update_query, (text,))
+                connection.commit()
+
+                # Fetch all the organization categories
+                cursor = connection.cursor()
+                query = 'SELECT name FROM organization_categories'
+                cursor.execute(query)
+                results = cursor.fetchall()
+                names_string = ', '.join([name[0] for name in results])
+
+
+                # Call the ProcessTextDB function
+                ProcessTextDB(rate, text, names_string)
+
+                # Update is_processed to True for the fetched record
+                update_query = ("UPDATE feedback_jobs SET is_processed = True "
+                                "WHERE text = %s")
+                cursor.execute(update_query, (text,))
+                connection.commit()
+
+            else:
+                print("No items to process.")
+
+    except Error as e:
+        print("Error while connecting to MySQL", e)
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+            # print("MySQL connection is closed")
+
+def main():
+
+    while(True):
+        getDBData()
+        time.sleep(5)
+
+
+if __name__ == "__main__":
+    main()

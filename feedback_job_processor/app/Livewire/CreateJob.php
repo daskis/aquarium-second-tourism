@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CreateJob extends Component
 {
-    public $rate;
+    public $rate = 0;
     public $text;
     public function render()
     {
@@ -22,12 +22,13 @@ class CreateJob extends Component
 
     public function create() {
         FeedbackJobs::create([
-            'rate' => $this->rate,
+            'rate' => $this->rate + 1,
             'text' => $this->text,
             'user_id' => 1,
             'place_id' => 1,
         ]);
 
-        $this->rate = $this->text = null;
+        $this->text = null;
+        $this->rate = 0;
     }
 }

@@ -9,7 +9,7 @@ class JobsTable extends Component
 {
     public function render()
     {
-        $jobs = FeedbackJobs::orderBy('is_processed', 'desc')->get();
+        $jobs = FeedbackJobs::orderBy('is_processed', 'asc')->get();
         return view('livewire.jobs-table', compact('jobs'));
     }
 }
