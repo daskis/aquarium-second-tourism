@@ -7,6 +7,8 @@ from django.contrib.auth.models import AbstractUser
 class Owner(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
 
+class Images(models.Model):
+    image = models.ImageField(upload_to='img/', blank=True, null=True)
 
 class General(models.Model):
     "базовая модель для антона"
@@ -14,7 +16,7 @@ class General(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     description = models.TextField()
     date = models.DateField()
-    img = models.ImageField(upload_to='img/', blank=True, null=True)
+    img = models.ManyToManyField(upload_to='img/', blank=True, null=True)
     rating = models.FloatField()
 
     class Meta:
@@ -38,6 +40,7 @@ class Facility(models.Model):
             raise ValidationError("out if range for 'latitude'")
         if not (-180 < self.coordinates['longitude'] < 180):
             raise ValidationError("out if range for 'longitude'")
+
 
 
 class Travel(models.Model):
