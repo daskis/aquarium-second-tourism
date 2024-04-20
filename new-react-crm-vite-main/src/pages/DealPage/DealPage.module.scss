@@ -1,0 +1,59 @@
+.wrapper {
+
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 32%;
+  &Icon {
+    cursor: pointer;
+    transition: 0.3s all ease;
+    &:hover {
+      color: #666666;
+    }
+  }
+}
+.modalFooter {
+  display: flex;
+  justify-content: flex-start;
+
+}
+
+.spinModal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+
+  width: 100vw;
+  height: 100vh;
+
+  top: 0;
+  right: 0;
+
+  z-index: 10000000;
+
+  background: #3333332c;
+
+  & span i{
+    transform: scale(400%);
+  }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    
+    background-color: gold;
+    
+}
+.form > * {
+    margin-bottom: 20px;
+    
+
+}

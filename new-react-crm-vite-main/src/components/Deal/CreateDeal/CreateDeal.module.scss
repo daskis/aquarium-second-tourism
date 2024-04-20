@@ -1,0 +1,32 @@
+.createDeal{
+    flex: 0 0 33%;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.input{
+    display: block;
+    width: 100%;
+    padding: 5px 0 5px 8px;
+    border:none;
+    border-bottom:1px solid #D3D8DD;
+
+    font-size: 14px;
+
+    margin-bottom: 30px;
+
+    outline: none;
+
+}
+.form{
+    display: flex;
+    background-color:gold;
+}
+.title{
+margin-top: 15px;
+}
+
+.together{
+    display: flex;
+    gap: 20px;
+}

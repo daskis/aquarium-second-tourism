@@ -1,0 +1,291 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+.auth {
+    display: flex;
+    height: 100vh;
+    margin: -20px;
+    font-family: 'Poppins', sans-serif;
+
+
+
+    &__authLeftBlock {
+        background: white;
+        width: 45%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width:940px){
+            width: 50%;
+        }
+
+        @media(max-width:600px){
+            width: 100%;
+        }
+
+
+    }
+
+    &__rightBlock {
+        
+        width: 55%;
+        background: linear-gradient(42deg, #34AFF9 0%, #098EDF 100%);
+        
+        @media (max-width:940px){
+            width: 50%;
+        }
+
+        @media(max-width:600px){
+            display: none;
+        }
+    }
+
+    &__wrp{
+        width: 100%;
+        max-width: 80%;
+
+        padding: 0 40px;
+    }
+}
+
+.authLeftBlock {
+
+    &__title {
+        font-size: 56px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 84px; 
+        color: #192A3E;
+
+        margin-bottom: 50px;
+
+        align-self: start;
+    }
+
+    &__form {
+        width: 100%;
+
+
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; 
+        letter-spacing: 0.1px;
+
+        
+    }
+}
+
+.rightBlock{
+
+    
+    &__wrp{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        height: 100%;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 30px;
+
+        text-align: center;
+
+        color: white;
+     
+    }
+
+    &__photo{
+        width: 400px;
+        height: fit-content;
+
+        margin-bottom: 50px;
+    }
+
+    &__title{
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px; 
+        letter-spacing: 0.1px;
+
+        margin-bottom: 10px;
+    }
+
+    &__text{
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; 
+        letter-spacing: 0.1px;     
+    }
+}
+
+.form {
+
+    &__input {
+        width: 100%;
+        padding: 15px 20px;
+        border:none;
+        border-bottom:1px solid #D3D8DD;
+
+        font-size: 16px;
+
+        margin-bottom: 30px;
+
+        outline: none;
+    }
+
+    &__saveAccessText {
+        cursor: pointer;
+
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: start;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 18px; 
+        letter-spacing: 0.2px;
+
+        color: #90A0B7;
+        font-family: 'Poppins', sans-serif;
+
+    }
+
+    &__saveAccessCheckbox {
+        cursor: pointer;
+
+        margin-right: 10px;
+
+
+    }
+
+    &__button {
+        cursor: pointer;
+
+        height: 50px;
+        width: 100%;
+        background: #109CF1;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px;  
+        letter-spacing: 0.1px;
+
+        color: white;
+
+        border:none;
+        border-radius: 4px;
+        box-shadow: 0px 4px 10px 0px rgba(16, 156, 241, 0.24);
+
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+        transition: box-shadow 0.2s ease;
+
+        &:hover{
+            box-shadow: 0px 4px 10px 0px rgba(16, 155, 241, 0.872);
+        }
+
+    }
+}
+
+.moveRegister {
+
+    &__text {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; 
+        letter-spacing: 0.1px;
+
+        color: #4C5862;
+
+        
+    }
+
+    &__button {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 20px; 
+        letter-spacing: 0.1px;
+
+        color: #109CF1;
+
+        cursor: pointer;
+    }
+}
+
+.passwords{
+    position: relative;
+
+    &__toggle{
+        position: absolute;
+        display: block;
+        content: '';
+
+        top: 30px;
+        right: 5%;
+
+        width: 20px;
+        height: 15px;
+
+        background-image: url('../../assets/images/auth/eye.svg');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        transform: translateY(-100%);
+
+        cursor: pointer;
+    }
+
+}
+
+
+.togglepa
+
+input{
+    outline: none;
+    display: block;
+}
+
+input[type="button"]{
+    color: inherit;
+    background-color: transparent;
+    border:none;
+    transition: filter 0.2s ease;
+
+    &:hover{
+        filter:brightness(90%)
+    }
+}
+
+.inputwrp{
+    position: relative;
+}
+
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.error{
+    margin-bottom: 10px;
+    margin-top: -20px;
+    top: 50%;
+    transform: translateY(0%);
+    color: rgba(255, 0, 0, 0.736);
+    font-family: Arial, Helvetica, sans-serif;
+}

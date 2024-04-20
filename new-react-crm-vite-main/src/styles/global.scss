@@ -1,0 +1,76 @@
+#root {
+  background-color: #eee;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.main {
+  flex: 1;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.dateTd {
+  display: flex;
+  flex-direction: column;
+  & span {
+    padding: 10px 0;
+  }
+  & span:nth-child(2) {
+    position: relative;
+    padding-bottom: 0;
+    &:before {
+      content: "";
+      display: block;
+      width: 140%;
+      right: 0;
+      left: -20px;
+      background: #f1f1f1;
+      height: 1px;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+.ant-table-thead {
+  & tr th {
+    background-color: #dfdfdf !important;
+  }
+}
+.page-wrapper {
+  padding: 20px;
+
+}
+.dateTd span:nth-child(2):before{
+  width: 130%;
+}
+.ant-select {
+  width: 100%;
+}
+
+.ant-collapse-header{
+  background: #fafafa !important;
+
+}
+
+

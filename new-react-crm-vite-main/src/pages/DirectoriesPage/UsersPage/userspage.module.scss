@@ -1,0 +1,11 @@
+.wrapperPassword{
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+

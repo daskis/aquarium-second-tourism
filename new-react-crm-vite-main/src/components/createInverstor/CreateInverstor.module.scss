@@ -1,0 +1,65 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  
+  .input{
+    display: block;
+    width: 100%;
+    padding: 6px 0 6px 8px;
+  
+    border:1px solid #babfc4;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.88);
+    font-size: 14px;
+    outline: none;
+
+  }
+  
+  .title{
+    display: block;
+    color: #192A3E;
+     
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 23px;
+    letter-spacing: 0.1px;
+  
+    margin-bottom: 15px;
+  }
+ 
+  
+
+ 
+
+  .subtitle{
+    display: block;
+    color: #666666;
+     
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+   
+    letter-spacing: 0.1px;
+  
+  }
+  
+  .grid{
+  
+  
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-row-gap: 10px;
+    grid-column-gap: 15px;
+    align-items: center;
+  
+    margin-bottom: 30px;
+  }
+  
+  
+  
