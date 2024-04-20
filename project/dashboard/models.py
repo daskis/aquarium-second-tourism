@@ -1,16 +1,11 @@
+from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class Owner(AbstractUser):
-    name = models.CharField(max_length=100)
-    experience = models.IntegerField(default=0)
-    phone = models.CharField(max_length=100)
-    level = models.IntegerField(default=1)
-    last_name = models.CharField(max_length=100, blank=True, null=True)
-    first_name = models.CharField(max_length=100, blank=True, null=True)
-
+class Owner(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
 
 class General(models.Model):
     "базовая модель для антона"
@@ -115,6 +110,7 @@ class Review(models.Model):
     consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
     text = models.TextField()
     rate = models.FloatField()
+    metrics = models.JSONField(default=dict)
     date = models.DateField(auto_now_add=True)
 
 # ДУММИ ДАТА
