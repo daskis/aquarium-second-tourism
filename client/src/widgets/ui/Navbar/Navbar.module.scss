@@ -25,17 +25,18 @@
 .coins {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
   min-width: 65px;
   font-weight: 900;
   z-index: 20;
   border-radius: 30px;
-  padding: 8px 12px;
+  padding: 8px 6px;
   background-color: var(--progress);
   cursor: pointer;
 
   & span {
-    font-size: 16px !important;
+    font-size: 14px !important;
     color: var(--white) !important;
   }
 }

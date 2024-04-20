@@ -1,0 +1,33 @@
+.wrapper {
+  padding: 10px;
+  border-radius: var(--border-radius-1);
+  font-weight: 300 !important;
+  background-color: var(--toolbar-bg);
+  height: 130px;
+  max-width: 250px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+
+  & .time {
+    font-size: 12px !important;
+  }
+
+  & .feels {
+    font-size: 12px !important;
+  }
+
+  & h1, span {
+    font-weight: 300 !important;
+    margin: 0 !important;
+  }
+
+  & img {
+    transform: scale(85%);
+    position: absolute;
+    top: 20px;
+    left: 0px;
+  }
+}
