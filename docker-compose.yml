@@ -2,10 +2,12 @@ version: '3.8'
 services:
   web:
     build: ./project
-    command:
-      - python manage.py makemigrations
-      - python manage.py migrate
-      - python manage.py runserver 0.0.0.0:8000
+    command: >
+      /bin/sh -c "python3 manage.py makemigrations --force-color --no-input -v 3
+      && python3 manage.py makemigrations --merge --no-input -v 3
+      && python3 manage.py migrate --force-color -v 3
+      && python3 manage.py createsuperuser --noinput; exit 0"
+      Источник: https://egorovegor.ru/python-docker-django
     volumes:
       - ./project:/usr/src/app
 
