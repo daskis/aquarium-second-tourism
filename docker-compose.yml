@@ -6,10 +6,11 @@ services:
       /bin/sh -c "python3 manage.py makemigrations --force-color --no-input -v 3
       && python3 manage.py makemigrations --merge --no-input -v 3
       && python3 manage.py migrate --force-color -v 3
-      && python3 manage.py createsuperuser --noinput; exit 0"
-      Источник: https://egorovegor.ru/python-docker-django
-    volumes:
-      - ./project:/usr/src/app
+      && python3 manage.py runserver 0.0.0.0:8000
+      
+
+#    volumes:
+#      - ./project:/usr/src/app
 
     ports:
       - "8000:8000"
