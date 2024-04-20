@@ -14,6 +14,7 @@ class Owner(AbstractUser):
 
 
 class Facility(models.Model):
+    "точка для антона"
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     coordinates = models.JSONField(default=dict)
@@ -39,6 +40,7 @@ class Facility(models.Model):
 
 
 class Travel(models.Model):
+    "тур для антона"
     name = models.CharField(max_length=100)
     rate = models.IntegerField()
     date = models.DateField()
