@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 import os
+
+from django.conf import settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'drf_yasg',
+    'users',
     'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -139,6 +142,33 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = 'users.User'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=2),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "AUTH_HEADER_TYPES": ("Bearer",),
+    "ROTATE_REFRESH_TOKENS": True,
+    # "BLACKLIST_AFTER_ROTATION": True,
+    "UPDATE_LAST_LOGIN": False,
+    "ALGORITHM": "HS256",
+    "SIGNING_KEY": settings.SECRET_KEY,
+}
 
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'

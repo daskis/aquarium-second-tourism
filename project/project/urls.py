@@ -38,4 +38,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('dashboard/', include('dashboard.urls')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('auth/', include('users.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

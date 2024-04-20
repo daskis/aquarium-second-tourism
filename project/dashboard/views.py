@@ -11,26 +11,26 @@ from .serializers import *
 from .forms import *
 
 
-def base(request):
-    return render(request, 'base.html')
-
-
-# ШАБЛОНЫ
-
-class LoginUser(LoginView):
-    form_class = LoginUserForm
-    template_name = 'loginform.html'
-    extra_context = {'title': 'Авторизация'}
-
-    def get_success_url(self):
-        return reverse_lazy('dashboard:base')
-
-
-class RegisterUser(CreateView):
-    form_class = RegisterUserForm
-    template_name = 'registerform.html'
-    extra_context = {'title': "Регистрация"}
-    success_url = reverse_lazy('dashboard:login')
+# def base(request):
+#     return render(request, 'base.html')
+#
+#
+# # ШАБЛОНЫ
+#
+# class LoginUser(LoginView):
+#     form_class = LoginUserForm
+#     template_name = 'loginform.html'
+#     extra_context = {'title': 'Авторизация'}
+#
+#     def get_success_url(self):
+#         return reverse_lazy('dashboard:base')
+#
+#
+# class RegisterUser(CreateView):
+#     form_class = RegisterUserForm
+#     template_name = 'registerform.html'
+#     extra_context = {'title': "Регистрация"}
+#     success_url = reverse_lazy('dashboard:login')
 
 
 # class Facility_list(ListView):
