@@ -60,3 +60,26 @@ class TravelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Travel
         fields = '__all__'
+class BeachSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Beach
+        fields = '__all__'
+class ValleySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Valley
+        fields = '__all__'
+
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = '__all__'
+
+
+class HostelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hostel
+        fields = '__all__'
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Images
+        fields = '__all__'

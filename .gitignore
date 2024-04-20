@@ -1,9 +1,9 @@
-.idea/vcs.xml
+../.idea/vcs.xml
 .venv
 db.sqlite3
 .idea
 .idea/
-project/project/requirements.txt
-
+/project/dashboard/migrations
+/project/users/migrations
 
 
