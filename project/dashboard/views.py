@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 from rest_framework import viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
+
 from .serializers import *
 
 from .forms import *
@@ -78,15 +81,50 @@ class OwnerViewSet(viewsets.ModelViewSet):
     queryset = Owner.objects.all()
     serializer_class = OwnerSerializer
 
+    @action(detail=True, methods=['get'], url_path='get_facilitys')
+    def get_facilitys(self, request, pk):
+        facilitys = Facility.objects.filter(owner=pk)
+        serializer = FacilitySerializer(facilitys, many=True)
+        return Response(serializer.data)
+
+
+class TravelViewSet(viewsets.ModelViewSet):
+    queryset = Travel.objects.all()
+    serializer_class = TravelSerializer
+
+    @action(detail=True, methods=['get'], url_path='get_facilitys')
+    def get_facilitys(self, request, pk):
+        facilitys = Facility.objects.filter(travel=pk)
+        serializer = FacilitySerializer(facilitys, many=True)
+        return Response(serializer.data)
+
 
 class FacilityViewSet(viewsets.ModelViewSet):
     queryset = Facility.objects.all()
     serializer_class = FacilitySerializer
 
+    @action(detail=True, methods=['get'], url_path='get_events')
+    def get_services(self, request, pk):
+        events = Event.objects.filter(facility=pk)
+        serializer = EventSerializer(events, many=True)
+        return Response(serializer.data)
+
+    @action(detail=True, methods=['get'], url_path='get_services')
+    def get_services(self, request, pk):
+        services = Service.objects.filter(facility=pk)
+        serializer = ServiceSerializer(services, many=True)
+        return Response(serializer.data)
+
 
 class ServiceViewSet(viewsets.ModelViewSet):
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+
+    @action(detail=True, methods=['get'], url_path='get_stocks')
+    def get_stocks(self, request, pk):
+        stocks = Stock.objects.filter(services=pk)
+        serializer = StockSerializer(stocks, many=True)
+        return Response(serializer.data)
 
 
 class EventViewSet(viewsets.ModelViewSet):
@@ -109,12 +147,6 @@ class LoyalityViewSet(viewsets.ModelViewSet):
     serializer_class = LoyalitySerializer
 
 
-
-
 class StockViewSet(viewsets.ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
-
-class TravelViewSet(viewsets.ModelViewSet):
-    queryset = Travel.objects.all()
-    serializer_class = TravelSerializer

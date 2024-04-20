@@ -41,19 +41,19 @@ class RegisterUserForm(UserCreationForm):
         return email
 
 
-class LoyalityForm(forms.ModelForm):
-    class Meta:
-        model = Loyality
-        fields = ['name', 'tariff', 'service']
-        labels = {
-            'name': "Название",
-            'tariff': "Тариф",
-            'service': "Услуга",
-        }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-input'}),
-            'tariff': forms.TextInput(attrs={'class': 'form-input'}),
-        }
+# class LoyalityForm(forms.ModelForm):
+#     class Meta:
+#         model = Loyality
+#         fields = ['name', 'tariff', 'service']
+#         labels = {
+#             'name': "Название",
+#             'tariff': "Тариф",
+#             'service': "Услуга",
+#         }
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-input'}),
+#             'tariff': forms.TextInput(attrs={'class': 'form-input'}),
+#         }
 
 
 class FacilityForm(forms.ModelForm):

@@ -1,5 +1,8 @@
-
+.idea/vcs.xml
 .venv
 db.sqlite3
 .idea
+.idea/
+project/project/requirements.txt
+
 
