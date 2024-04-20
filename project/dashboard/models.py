@@ -13,7 +13,7 @@ class Images(models.Model):
 class General(models.Model):
     "базовая модель для антона"
     name = models.CharField(max_length=100)
-    owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField()
     date = models.DateField()
     img = models.ManyToManyField(Images)
