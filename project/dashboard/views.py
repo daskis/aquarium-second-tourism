@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from .serializers import *
 
 from .forms import *
-
+from rest_framework.generics import ListCreateAPIView
 
 # def base(request):
 #     return render(request, 'base.html')
@@ -195,4 +195,10 @@ class ReviewViewSet(viewsets.ModelViewSet):
 class HostelViewSet(viewsets.ModelViewSet):
     queryset = Hostel.objects.all()
     serializer_class = HostelSerializer
+
+class ImagesListView(ListCreateAPIView):
+    queryset = Images.objects.all()
+    serializer_class = ImageSerializer
+
+
 
