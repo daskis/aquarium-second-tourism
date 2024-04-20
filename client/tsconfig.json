@@ -84,7 +84,8 @@
       "@entities/*": [
         "src/entities/*"
       ]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src"

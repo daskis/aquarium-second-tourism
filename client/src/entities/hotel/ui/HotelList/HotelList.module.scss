@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-weight: 900 !important;
+}
+
+.link {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--primary) !important;
+}
