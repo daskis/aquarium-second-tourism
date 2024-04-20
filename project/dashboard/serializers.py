@@ -2,6 +2,12 @@ from .models import *
 from rest_framework import serializers
 
 
+class GeneralSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = General
+        fields = '__all__'
+
+
 class FacilitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Facility
@@ -48,6 +54,7 @@ class OwnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Owner
         fields = '__all__'
+
 
 class TravelSerializer(serializers.ModelSerializer):
     class Meta:

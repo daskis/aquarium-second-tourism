@@ -38,25 +38,25 @@ class RegisterUser(CreateView):
 #     template_name = 'dashboard/facility-list.html'
 #     context_object_name = 'facilities'
 
-class FacilityList(CreateView):
-    model = Facility
-    form_class = FacilityForm
-    template_name = 'dashboard/facility-list.html'
+# class FacilityList(CreateView):
+#     model = Facility
+#     form_class = FacilityForm
+#     template_name = 'dashboard/facility-list.html'
 
     # success_url = '/success-url/'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['facility_list'] = Facility.objects.all()
-        context['form'] = FacilityForm()
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['facility_list'] = Facility.objects.all()
+    #     context['form'] = FacilityForm()
+    #     return context
 
-    def post(self, request, *args, **kwargs):
-        form = FacilityForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return super().get(request, *args, **kwargs)
-        return render(request, self.template_name, {'facility_list': Facility.objects.all(), 'form': form})
+    # def post(self, request, *args, **kwargs):
+    #     form = FacilityForm(request.POST)
+    #     if form.is_valid():
+    #         form.save()
+    #         return super().get(request, *args, **kwargs)
+    #     return render(request, self.template_name, {'facility_list': Facility.objects.all(), 'form': form})
 
 
 class ServiceList(CreateView):
@@ -77,6 +77,8 @@ class ServiceList(CreateView):
 
 # АПИ
 
+
+
 class OwnerViewSet(viewsets.ModelViewSet):
     queryset = Owner.objects.all()
     serializer_class = OwnerSerializer
@@ -87,6 +89,27 @@ class OwnerViewSet(viewsets.ModelViewSet):
         serializer = FacilitySerializer(facilitys, many=True)
         return Response(serializer.data)
 
+class GeneralViewSet(viewsets.ModelViewSet):
+    queryset = General.objects.all()
+    serializer_class = GeneralSerializer
+
+
+    @action(detail=True, methods=['get'], url_path='detail')
+    def detail_view(self, request, pk):
+        """ЭТО ОЧЕНЬ ПЛОХАЯ АРХИТЕКТУРА"""
+
+
+        if Travel.objects.filter(pk=pk).exists():
+
+            travel = Travel.objects.get(pk=pk)
+            serializer = TravelSerializer(travel)
+        elif Facility.objects.filter(pk=pk).exists():
+            facility = Facility.objects.get(pk=pk)
+            serializer = FacilitySerializer(facility)
+        else:
+            event = Event.objects.get(pk=pk)
+            serializer = EventSerializer(event)
+        return Response(serializer.data)
 
 class TravelViewSet(viewsets.ModelViewSet):
     queryset = Travel.objects.all()
