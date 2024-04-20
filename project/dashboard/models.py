@@ -16,7 +16,7 @@ class General(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     description = models.TextField()
     date = models.DateField()
-    img = models.ManyToManyField(upload_to='img/', blank=True, null=True)
+    img = models.ManyToManyField(Images)
     rating = models.FloatField()
 
     class Meta:
