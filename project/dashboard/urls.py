@@ -27,7 +27,7 @@ urlpatterns = [
     # path('logout/', LogoutView.as_view(), name='logout'),
     # path('register/', views.RegisterUser.as_view(), name='register'),
     # path('facility-list/', views.FacilityList.as_view(), name='facility-list'),
-    path('service-list/<int:pk>/', views.ServiceList.as_view(), name='service-list'),
+    # path('service-list/<int:pk>/', views.ServiceList.as_view(), name='service-list'),
     path('api/', include(router.urls)),
 
 
