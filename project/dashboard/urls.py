@@ -14,6 +14,7 @@ router.register(r'loyalitys', views.LoyalityViewSet)
 router.register(r'stocks', views.StockViewSet)
 router.register(r'owners', views.OwnerViewSet)
 router.register(r'travels', views.TravelViewSet)
+router.register(r'general', views.GeneralViewSet)
 
 app_name='dashboard'
 urlpatterns = [
@@ -21,7 +22,7 @@ urlpatterns = [
     path('login/', views.LoginUser.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', views.RegisterUser.as_view(), name='register'),
-    path('facility-list/', views.FacilityList.as_view(), name='facility-list'),
+    # path('facility-list/', views.FacilityList.as_view(), name='facility-list'),
     path('service-list/<int:pk>/', views.ServiceList.as_view(), name='service-list'),
     path('api/', include(router.urls))
 

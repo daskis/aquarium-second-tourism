@@ -18,12 +18,27 @@
 .ant-progress-text {
   display: none !important;
 }
+
 .ant-progress-outer {
   padding: 0 !important;
 }
+
 svg {
   color: var(--black);
 }
+
 .swiper-slide {
   width: 60% !important;
+}
+
+.ant-rate-star {
+  & path {
+    fill: var(--gray);
+  }
+}
+
+.ant-rate-star-full {
+  & path {
+    fill: #FFCC4D;
+  }
 }

@@ -56,17 +56,17 @@ class RegisterUserForm(UserCreationForm):
 #         }
 
 
-class FacilityForm(forms.ModelForm):
-    class Meta:
-        model = Facility
-        fields = ['name', 'owner']
-        labels = {
-            'name': "Название",
-            'owner': "Владелец",
-        }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-input'}),
-        }
+# class FacilityForm(forms.ModelForm):
+#     class Meta:
+#         model = Facility
+#         fields = ['name', 'owner']
+#         labels = {
+#             'name': "Название",
+#             'owner': "Владелец",
+#         }
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-input'}),
+#         }
 
 
 class ServiceForm(forms.ModelForm):

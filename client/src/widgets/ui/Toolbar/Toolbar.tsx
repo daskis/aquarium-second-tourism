@@ -1,9 +1,12 @@
 import cls from "./Toolbar.module.scss"
-import {CloseCircleOutlined, CommentOutlined, HomeOutlined, UserOutlined} from "@ant-design/icons";
 import {useMemo, useState} from "react";
-import {Tooltip} from "antd";
+import {Tooltip, Typography} from "antd";
 import {Link, Outlet} from "react-router-dom";
 import {FloatGroup} from "@shared/ui";
+import Home from "@assets/icons/home.svg"
+import Places from "@assets/icons/places.svg"
+import Notification from "@assets/icons/notification.svg"
+import Favourites from "@assets/icons/favourites.svg"
 
 export const Toolbar = () => {
     const [arrow, setArrow] = useState('Show');
@@ -23,25 +26,25 @@ export const Toolbar = () => {
     }, [arrow]);
     const list = [
         {
-            text: "Home",
+            text: "Избранное",
+            path: "/favourites",
+            icon: <Favourites/>
+        },
+        {
+            text: "Уведомления",
+            path: "/notifications",
+            icon: <Notification/>
+        },
+        {
+            text: "Места",
+            path: "/places",
+            icon: <Places/>
+        },
+        {
+            text: "Главная",
             path: "/home",
-            icon: <HomeOutlined/>
+            icon: <Home/>
         },
-        {
-            text: "Home",
-            path: "/map",
-            icon: <CloseCircleOutlined/>
-        },
-        {
-            text: "Тиндер ебучий",
-            path: "/tinder",
-            icon: <CommentOutlined/>
-        },
-        {
-            text: "Home",
-            path: "/user",
-            icon: <UserOutlined/>
-        }
     ]
 
     return (
@@ -52,11 +55,10 @@ export const Toolbar = () => {
                 <ul className={cls.list}>
                     {list.map((item, index) => (
                         <li key={item.path}>
-                            <Tooltip placement="topLeft" title={item.text} arrow={mergedArrow}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                </Link>
-                            </Tooltip>
+                            <Link to={item.path}>
+                                {item.icon}
+                            </Link>
+                            <Typography.Text className={cls.text}>{item.text}</Typography.Text>
                         </li>
                     ))}
                 </ul>

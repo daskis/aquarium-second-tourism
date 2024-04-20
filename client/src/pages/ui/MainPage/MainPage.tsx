@@ -9,6 +9,9 @@ import Interesting from "@assets/img/interesting.png"
 import Surprise from "@assets/img/surprise.png"
 import {Switch} from "@shared/ui";
 import {useState} from "react";
+import {HotelList} from "@entities/hotel/ui";
+import {TourList} from "@entities/tour/ui";
+import {MorePlaces} from "@widgets/ui";
 
 
 export const MainPage = () => {
@@ -46,7 +49,11 @@ export const MainPage = () => {
                 ))}
             </div>
             <Switch firstValue={"Вы знаете где остановиться? "} secondValue={"Впервые в городе? "}
-                    onChange={handleChange}/>
+                    onChange={handleChange}
+            />
+            <HotelList/>
+            <TourList/>
+            <MorePlaces/>
         </div>
     );
 };
