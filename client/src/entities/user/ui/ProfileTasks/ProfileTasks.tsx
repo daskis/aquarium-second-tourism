@@ -33,9 +33,14 @@ export const ProfileTasks = () => {
                         </Typography.Text>
                     </div>
                 </div>
-                <Typography.Title className={cls.name} level={4}>
-                    Котик умер(
-                </Typography.Title>
+                <div className={cls.additional}>
+                    <Typography.Title className={cls.name} level={4}>
+                        Забрать жену
+                    </Typography.Title>
+                    <Typography.Text className={cls.additionalTag}>
+                        Активно
+                    </Typography.Text>
+                </div>
             </div>
         </div>
     );
