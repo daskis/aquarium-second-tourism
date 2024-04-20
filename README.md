@@ -33,7 +33,15 @@
 
 ### 3. [client](/client) - Сервис содержащий публичный frontend
 
-СКРИНШОТ
+![1.jpeg](assets%2F1.jpeg)
+![2.jpeg](assets%2F2.jpeg)
+![3.jpeg](assets%2F3.jpeg)
+![4.jpeg](assets%2F4.jpeg)
+![5.jpeg](assets%2F5.jpeg)
+![6.jpeg](assets%2F6.jpeg)
+![7.jpeg](assets%2F7.jpeg)
+![8.jpeg](assets%2F8.jpeg)
+![9.jpeg](assets%2F9.jpeg)
 
 ### 4. [feedback_analysis_service](/feedback_analysis_service) - Сервис NLP анализирующий отзывы пользователя и выдающий численные динамические метрики.
 ### 5. [feedback_job_processor](/feedback_job_processor) - Сервис Backend для реализации доступа к отложенным задачам, AI-чату, Отзывам, а также Динамическим аналитическим группам организаций.

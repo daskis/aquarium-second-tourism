@@ -15,24 +15,11 @@ def ProcessTextDB(text, id=1):
     MSG = f"""
         Answer as an analyst would answer. Always answer in Russian Language. My message for you: {text}. If you need, you can write HTML code with tailwind for difficult view or bootstrap for usual basics css styles, this code will be rendered for me. Do not use Markdown, LATeX, use only html and text. Always answer using HTML code. 
     """
-
+    
     res = llm(MSG)
     return res
 
 
-
-def chatName(text):
-    MSG = f"""
-        Write short name for chat where message is: {text}
-    """
-    llm: LLM = G4FLLM(
-        model=models.gpt_35_turbo,
-        # provider=Provider.Aichat,
-    )
-    res = llm(MSG)
-    res = res.replace("```html", "").replace("```", "")
-    print(res)
-    return res
 
 def getDBData():
     try:
