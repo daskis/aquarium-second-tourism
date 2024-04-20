@@ -1,13 +1,13 @@
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.contrib.auth.models import User, AbstractUser
+from django.contrib.auth.models import AbstractUser
 
 
 class Owner(AbstractUser):
     name = models.CharField(max_length=100)
-    experience = models.IntegerField()
+    experience = models.IntegerField(default=0)
     phone = models.CharField(max_length=100)
-    level = models.IntegerField()
+    level = models.IntegerField(default=1)
     vipstatus = models.CharField(choices=[('standart', 'standart'), ('gold', 'gold'), ('platinum', 'platinum')], max_length=100)
 
 
@@ -15,16 +15,21 @@ class Facility(models.Model):
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     coordinates = models.JSONField(default=dict)
+    rate = models.IntegerField()
+    img = models.ImageField(upload_to='static/img', blank=True, null=True)
 
-    def clean(self):
-        if self.coordinates and (
-                'latitude' not in self.coordinates or 'longitude' not in self.coordinates):
-            raise ValidationError("JSON data must contain keys 'latitude' and 'longitude'.")
-        print(self.coordinates['latitude'])
-        if not (-90 < self.coordinates['latitude'] < 90):
-            raise ValidationError("out if range for 'latitude'")
-        if not (-180 < self.coordinates['longitude'] < 180):
-            raise ValidationError("out if range for 'longitude'")
+
+    # def clean(self):
+    #     if self.coordinates and (
+    #             'latitude' not in self.coordinates or 'longitude' not in self.coordinates):
+    #         raise ValidationError("JSON data must contain keys 'latitude' and 'longitude'.")
+    #     print(self.coordinates['latitude'])
+    #     if not (-90 < self.coordinates['latitude'] < 90):
+    #         raise ValidationError("out if range for 'latitude'")
+    #     if not (-180 < self.coordinates['longitude'] < 180):
+    #         raise ValidationError("out if range for 'longitude'")
+    #
+
 
     class Meta:
         ordering = ['name']
@@ -32,7 +37,21 @@ class Facility(models.Model):
     def __str__(self):
         return self.name
 
+class Travel(models.Model):
+    name = models.CharField(max_length=100)
+    rate = models.IntegerField()
+    date = models.DateField()
+    img = models.ImageField(upload_to='static/img', blank=True, null=True)
+    facilitys = models.ManyToManyField("Facility", blank=True)
 
+
+
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
 class Event(models.Model):
     name = models.CharField(max_length=100)
     facility = models.ForeignKey("Facility", on_delete=models.CASCADE)
@@ -83,5 +102,7 @@ class Loyality(models.Model):
     name = models.CharField(max_length=100)
     tariff = models.CharField(max_length=100, choices=[('basic', 'Basic'), ('premium', 'Premium')])
     service = models.ManyToManyField(Service)
+
+
 
 # Create your models here.

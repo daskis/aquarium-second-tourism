@@ -91,4 +91,5 @@ class ConsumerForm(forms.ModelForm):
         }
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-input'}),
+
         }
