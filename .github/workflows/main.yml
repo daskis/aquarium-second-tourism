@@ -46,7 +46,10 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
-        script: docker-compose down && docker-compose up -d
+        script: |
+          git checkout master;
+          git pull;
+          docker-compose down && docker-compose up -d
     
       # Runs a single command using the runners shell
 
