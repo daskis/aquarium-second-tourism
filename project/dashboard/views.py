@@ -59,20 +59,20 @@ from .forms import *
     #     return render(request, self.template_name, {'facility_list': Facility.objects.all(), 'form': form})
 
 
-class ServiceList(CreateView):
-    model = Service
-    form_class = ServiceForm
-    template_name = 'dashboard/service-list.html'
-
-    # success_url = '/success-url/'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        service_id = self.kwargs.get('pk')
-        context['service_list'] = Service.objects.filter(facility=service_id)
-        context['facility'] = Facility.objects.get(pk=service_id)
-        context['form'] = ServiceForm()
-        return context
+# class ServiceList(CreateView):
+#     model = Service
+#     form_class = ServiceForm
+#     template_name = 'dashboard/service-list.html'
+#
+#     # success_url = '/success-url/'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         service_id = self.kwargs.get('pk')
+#         context['service_list'] = Service.objects.filter(facility=service_id)
+#         context['facility'] = Facility.objects.get(pk=service_id)
+#         context['form'] = ServiceForm()
+#         return context
 
 
 # АПИ
@@ -97,15 +97,21 @@ class GeneralViewSet(viewsets.ModelViewSet):
     @action(detail=True, methods=['get'], url_path='detail')
     def detail_view(self, request, pk):
         """ЭТО ОЧЕНЬ ПЛОХАЯ АРХИТЕКТУРА"""
-
-
         if Travel.objects.filter(pk=pk).exists():
-
             travel = Travel.objects.get(pk=pk)
             serializer = TravelSerializer(travel)
         elif Facility.objects.filter(pk=pk).exists():
             facility = Facility.objects.get(pk=pk)
             serializer = FacilitySerializer(facility)
+        elif Valley.objects.filter(pk=pk).exists():
+            valley = Valley.objects.get(pk=pk)
+            serializer = ValleySerializer(valley)
+        elif Hostel.objects.filter(pk=pk).exists():
+            hostel = Hostel.objects.get(pk=pk)
+            serializer = HostelSerializer(hostel)
+        elif Beach.objects.filter(pk=pk).exists():
+            beach = Beach.objects.get(pk=pk)
+            serializer = BeachSerializer(beach)
         else:
             event = Event.objects.get(pk=pk)
             serializer = EventSerializer(event)
@@ -173,3 +179,20 @@ class LoyalityViewSet(viewsets.ModelViewSet):
 class StockViewSet(viewsets.ModelViewSet):
     queryset = Stock.objects.all()
     serializer_class = StockSerializer
+
+class ValleyViewSet(viewsets.ModelViewSet):
+    queryset = Valley.objects.all()
+    serializer_class = ValleySerializer
+
+class BeachViewSet(viewsets.ModelViewSet):
+    queryset = Beach.objects.all()
+    serializer_class = BeachSerializer
+
+class ReviewViewSet(viewsets.ModelViewSet):
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
+
+class HostelViewSet(viewsets.ModelViewSet):
+    queryset = Hostel.objects.all()
+    serializer_class = HostelSerializer
+

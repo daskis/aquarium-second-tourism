@@ -7,11 +7,13 @@ from django.contrib.auth.models import AbstractUser
 class Owner(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
 
+
 class General(models.Model):
     "базовая модель для антона"
     name = models.CharField(max_length=100)
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     description = models.TextField()
+    date = models.DateField()
     img = models.ImageField(upload_to='img/', blank=True, null=True)
     rating = models.FloatField()
 
@@ -23,7 +25,7 @@ class General(models.Model):
 
 
 class Facility(models.Model):
-    "точка для антона"
+    "Интересные места для антона"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
     coordinates = models.JSONField(default=dict)
 
@@ -38,15 +40,66 @@ class Facility(models.Model):
             raise ValidationError("out if range for 'longitude'")
 
 
-
-
 class Travel(models.Model):
     "тур для антона"
     general = models.OneToOneField(General, on_delete=models.CASCADE)
-    date = models.DateField()
+    reviews = models.ManyToManyField("Review")
     facilitys = models.ManyToManyField("Facility", blank=True)
 
+
+class Hostel(models.Model):
+    "отели места"
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
+    reviews = models.ManyToManyField("Review")
+    coordinates = models.JSONField(default=dict)
+
+    def clean_coordinates(self):
+        if self.coordinates and (
+                'latitude' not in self.coordinates or 'longitude' not in self.coordinates):
+            raise ValidationError("JSON data must contain keys 'latitude' and 'longitude'.")
+        print(self.coordinates['latitude'])
+        if not (-90 < self.coordinates['latitude'] < 90):
+            raise ValidationError("out if range for 'latitude'")
+        if not (-180 < self.coordinates['longitude'] < 180):
+            raise ValidationError("out if range for 'longitude'")
+
+
+class Valley(models.Model):
+    "парки"
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
+    reviews = models.ManyToManyField("Review")
+    coordinates = models.JSONField(default=dict)
+
+    def clean_coordinates(self):
+        if self.coordinates and (
+                'latitude' not in self.coordinates or 'longitude' not in self.coordinates):
+            raise ValidationError("JSON data must contain keys 'latitude' and 'longitude'.")
+        print(self.coordinates['latitude'])
+        if not (-90 < self.coordinates['latitude'] < 90):
+            raise ValidationError("out if range for 'latitude'")
+        if not (-180 < self.coordinates['longitude'] < 180):
+            raise ValidationError("out if range for 'longitude'")
+
+
+class Beach(models.Model):
+    "пляжи"
+    general = models.OneToOneField(General, on_delete=models.CASCADE)
+    reviews = models.ManyToManyField("Review")
+    coordinates = models.JSONField(default=dict)
+
+    def clean_coordinates(self):
+        if self.coordinates and (
+                'latitude' not in self.coordinates or 'longitude' not in self.coordinates):
+            raise ValidationError("JSON data must contain keys 'latitude' and 'longitude'.")
+        print(self.coordinates['latitude'])
+        if not (-90 < self.coordinates['latitude'] < 90):
+            raise ValidationError("out if range for 'latitude'")
+        if not (-180 < self.coordinates['longitude'] < 180):
+            raise ValidationError("out if range for 'longitude'")
+
+
 class Event(models.Model):
+
     general = models.OneToOneField(General, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     facility = models.ForeignKey("Facility", on_delete=models.CASCADE)
@@ -59,9 +112,6 @@ class Service(models.Model):
 
     class Meta:
         ordering = ['name']
-
-    def __str__(self):
-        return self.name
 
 
 class Stock(models.Model):
@@ -79,18 +129,8 @@ class Stock(models.Model):
             raise ValidationError("Quantity cannot be negative")
 
 
-class Consumer(models.Model):
-    lastname = models.CharField(max_length=100, blank=True, null=True)
-    name = models.CharField(max_length=100, blank=True, null=True)
-    middlename = models.CharField(max_length=100, blank=True, null=True)
-    phone = models.CharField(max_length=100, unique=True)
-    passport = models.CharField(max_length=100, blank=True, null=True)
-    address = models.CharField(max_length=100, blank=True, null=True)
-    coins = models.IntegerField(default=0)
-
-
 class Transaction(models.Model):
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    consumer = models.ForeignKey("Consumer", on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
     payment = models.IntegerField()
     date = models.DateField(auto_now_add=True)
@@ -107,10 +147,20 @@ class Loyality(models.Model):
 
 
 class Review(models.Model):
-    consumer = models.ForeignKey(Consumer, on_delete=models.CASCADE)
+    consumer = models.ForeignKey("Consumer", on_delete=models.CASCADE)
     text = models.TextField()
     rate = models.FloatField()
     metrics = models.JSONField(default=dict)
     date = models.DateField(auto_now_add=True)
+
+
+class Consumer(models.Model):
+    lastname = models.CharField(max_length=100, blank=True, null=True)
+    name = models.CharField(max_length=100, blank=True, null=True)
+    middlename = models.CharField(max_length=100, blank=True, null=True)
+    phone = models.CharField(max_length=100, unique=True)
+    passport = models.CharField(max_length=100, blank=True, null=True)
+    address = models.CharField(max_length=100, blank=True, null=True)
+    coins = models.IntegerField(default=0)
 
 # ДУММИ ДАТА
