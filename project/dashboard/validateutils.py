@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-
+#{"latitude":0,"longitude":0}
 def coors_validate(coordinates):
 
     if coordinates:

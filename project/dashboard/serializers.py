@@ -15,6 +15,10 @@ class GeneralSerializer(serializers.ModelSerializer):
 
 
 class FacilitySerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = Facility
         fields = '__all__'
@@ -29,6 +33,10 @@ class ServiceSerializer(serializers.ModelSerializer):
 
 
 class EventSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = Event
         fields = '__all__'
@@ -65,12 +73,20 @@ class OwnerSerializer(serializers.ModelSerializer):
 
 
 class TravelSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = Travel
         fields = '__all__'
 
 
 class BeachSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = Beach
         fields = '__all__'
@@ -80,6 +96,10 @@ class BeachSerializer(serializers.ModelSerializer):
 
 
 class ValleySerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
 
     class Meta:
         model = Valley
@@ -97,6 +117,10 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class HostelSerializer(serializers.ModelSerializer):
+    img_url = serializers.SerializerMethodField()
+
+    def get_img_url(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = Hostel
         fields = '__all__'
