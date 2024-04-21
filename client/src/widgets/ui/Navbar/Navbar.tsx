@@ -11,12 +11,12 @@ export const Navbar = () => {
                 <Input
                     placeholder="Поиск"
                     rootClassName={cls.input} size="large" prefix={<SearchOutlined/>} suffix={<CloseOutlined/>}/>
-                <div className={cls.coins}>
+                <Link to="/profile" className={cls.coins}>
                     <Coin/>
                     <Typography.Text>
-                        23
+                        40
                     </Typography.Text>
-                </div>
+                </Link>
                 <Link to="/user" className={cls.avatar}>
                     <UserOutlined/>
                 </Link>

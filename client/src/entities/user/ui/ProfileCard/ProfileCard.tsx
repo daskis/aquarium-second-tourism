@@ -1,7 +1,7 @@
 import cls from "./ProfileCard.module.scss"
-import {Button, Progress, Typography} from "antd";
-import {InfoCircleOutlined, RadarChartOutlined, RightOutlined, UserOutlined} from "@ant-design/icons";
-
+import {Progress, Typography} from "antd";
+import UserIcon from "@assets/icons/userIcon.svg"
+import {InfoCircleOutlined} from "@ant-design/icons";
 export const ProfileCard = () => {
     return (
         <div className={cls.wrapper}>
@@ -10,12 +10,12 @@ export const ProfileCard = () => {
                     Новичок
                 </Typography.Title>
                 <div className={cls.avatar}>
-                    <UserOutlined/>
+                    <UserIcon/>
                 </div>
                 <div className={cls.progressWrapper}>
                     <div className={cls.scope}>
                         <Typography.Title level={2}>
-                            <InfoCircleOutlined/> 100
+                            <InfoCircleOutlined/> 40
                         </Typography.Title>
                         <Typography.Title level={2}>
                             <InfoCircleOutlined/> 100

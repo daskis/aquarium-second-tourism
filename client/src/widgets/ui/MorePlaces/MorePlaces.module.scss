@@ -27,7 +27,15 @@
     flex-direction: column;
     justify-content: end;
     padding: 0 10px;
+    transition: .3s all ease;
 
+
+    &:hover {
+      filter: brightness(90%);
+    }
+    &:active {
+      filter: brightness(80%);
+    }
     & .name {
       font-weight: 900 !important;
       color: var(--white) !important;

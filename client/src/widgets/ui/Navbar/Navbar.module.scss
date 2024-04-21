@@ -40,7 +40,10 @@
   padding: 8px 6px;
   background-color: var(--progress);
   cursor: pointer;
-
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
   & span {
     font-size: 14px !important;
     color: var(--white) !important;

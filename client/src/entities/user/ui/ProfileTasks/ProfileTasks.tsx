@@ -1,8 +1,7 @@
 import cls from "./ProfileTasks.module.scss"
 import {Tag, Typography} from "antd";
-import {BehanceSquareOutlined, ClockCircleOutlined, RightOutlined} from "@ant-design/icons";
+import {BehanceSquareOutlined, ClockCircleOutlined, InfoCircleOutlined, RightOutlined} from "@ant-design/icons";
 import kotik from "@assets/img/kotik_b.jpg"
-import Coin from "@assets/icons/coin.svg"
 
 export const ProfileTasks = () => {
     return (
@@ -21,7 +20,7 @@ export const ProfileTasks = () => {
                 <img src={kotik} alt=""/>
                 <div className={cls.taskInfo}>
                     <div className={cls.coins}>
-                        <Coin/>
+                        <InfoCircleOutlined/>
                         <Typography.Text>
                             23
                         </Typography.Text>

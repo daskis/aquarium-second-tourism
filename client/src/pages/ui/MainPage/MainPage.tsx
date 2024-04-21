@@ -22,6 +22,7 @@ export const MainPage = () => {
             title: "Спецапедложение",
             text: "Закажите пиццу в ресторане у моря",
             price: "Cashback 15%",
+            link: "/offers"
         },
         {
             img: Interesting,
@@ -45,7 +46,7 @@ export const MainPage = () => {
             <div className={cls.actions}>
                 <WeatherCard/>
                 {list.map((item, i) => (
-                    <BonusCard img={item.img} title={item.title} price={item.price} text={item.text}/>
+                    <BonusCard {...item}/>
                 ))}
             </div>
             <Switch firstValue={"Вы знаете где остановиться? "} secondValue={"Впервые в городе? "}

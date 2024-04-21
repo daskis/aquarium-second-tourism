@@ -1,15 +1,15 @@
 import {createBrowserRouter} from 'react-router-dom';
 import {Navbar, Toolbar} from "@widgets/ui";
 import {
-    BeachesPage,
+    BeachesPage, FavoritesPage,
     HotelsPage,
     InterestingPage,
     LoginPage,
-    MainPage, ParksPage,
+    MainPage, OffersPage, ParksPage,
     PlacePage,
     ProfilePage,
     RegisterPage,
-    ToursPage
+    ToursPage, UserPage
 } from "@pages/ui";
 
 export const router = createBrowserRouter([
@@ -43,6 +43,19 @@ export const router = createBrowserRouter([
                 ],
             },
             {
+                path: 'favourites',
+                element: <>
+                    <Navbar/>
+                    <Toolbar/>
+                </>,
+                children: [
+                    {
+                        index: true,
+                        element: <FavoritesPage/>,
+                    }
+                ],
+            },
+            {
                 path: "hotels",
                 element: <>
                     <Navbar/>
@@ -52,6 +65,19 @@ export const router = createBrowserRouter([
                     {
                         index: true,
                         element: <HotelsPage/>,
+                    }
+                ],
+            },
+            {
+                path: "offers",
+                element: <>
+                    <Navbar/>
+                    <Toolbar/>
+                </>,
+                children: [
+                    {
+                        index: true,
+                        element: <OffersPage/>,
                     }
                 ],
             },
@@ -108,7 +134,7 @@ export const router = createBrowserRouter([
                 ],
             },
             {
-                path: "user",
+                path: "profile",
                 element: <Toolbar/>,
                 children: [
                     {
@@ -117,6 +143,17 @@ export const router = createBrowserRouter([
                     }
                 ]
             },
+            {
+                path: "user",
+                element: <Toolbar/>,
+                children: [
+                    {
+                        index: true,
+                        element: <UserPage/>
+                    }
+                ]
+            },
+
             {
                 path: "auth",
                 children: [

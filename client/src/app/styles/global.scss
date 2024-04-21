@@ -42,3 +42,23 @@ svg {
     fill: #FFCC4D;
   }
 }
+
+.swiper-pagination {
+  z-index: 1000;
+  bottom: 0;
+  width: 100% !important;
+  height: 20px !important;
+}
+
+.swiper-button-disabled {
+  color: var(--gray) !important;
+
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--white) !important;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  color: var(--white) !important;
+  transform: scale(60%);
+}

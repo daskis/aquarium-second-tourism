@@ -3,6 +3,6 @@ export interface IPlace {
     description: string
     place: string
     rating: number;
-    img: any;
+    img: string[];
 
 }

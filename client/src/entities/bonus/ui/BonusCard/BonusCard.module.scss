@@ -1,7 +1,7 @@
 .wrapper {
   position: relative !important;
   padding: 10px;
-  background-color: #F8897A;
+  background-color: var(--bg-light);
   border-radius: var(--border-radius-1);
   font-weight: 300 !important;
   height: 130px;
@@ -9,6 +9,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  &:last-child {
+    background-color: var(--toolbar-bg);
+    align-items: end;
+    text-align: right;
+
+    & img {
+      left: 0;
+      bottom: 10px;
+    }
+
+  }
 
   & .title {
     font-weight: 700 !important;
@@ -16,23 +29,24 @@
   }
 
   & .text {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   & .price {
-    font-size: 12px !important;
+    font-size: 11px !important;
   }
 
   & img {
+    overflow: hidden;
     transform: scaleX(90%);
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     right: -5px;
     left: auto;
   }
 
   & h1, span {
-    max-width: 70%;
+    max-width: 60%;
     font-weight: 300 !important;
     margin: 0 !important;
   }

@@ -1,8 +1,8 @@
 export interface IHotelCard {
-    title: string
+    name: string
     rating: number
     reviews: number
     type: string
-    img: any
+    img_url: any
     id?: number
 }
