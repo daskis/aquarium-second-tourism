@@ -7,6 +7,17 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import nest_asyncio
 import sys
 import os
+from langchain.agents import AgentType, initialize_agent, load_tools
+from langchain_openai import OpenAI
+api_key = os.getenv("OPENAI_API_KEY")
+serper_api_key = os.getenv("SERPER_API_KEY")
+
+print("OPENAI_API_KEY:", api_key) 
+print("SERPER_API_KEY:", serper_api_key) 
+if not api_key:
+    raise ValueError("NO AI")
+if not serper_api_key:
+    raise ValueError("NO SERPER")
 nest_asyncio.apply()
 print(sys.version)
 logger = logging.getLogger(__name__)
@@ -53,7 +64,7 @@ async def send_menu_with_buttons(update: Update, context: ContextTypes.DEFAULT_T
             personal_message = (
                 f"Имя: {username}\n"
                 f"Класс: {character_class}\n"
-                f"Скорость (скидка на Питстопах): {speed}%\n"
+                f"Скорость (скидка на Туры): {speed}%\n"
                 f"Хитрость (скидка в Магазинах): {cunning}%\n"
                 f"Удача (скидка в Отелях): {luck}%"
             )
@@ -182,7 +193,18 @@ async def result(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 
 async def handle_message(update: Update, context: CallbackContext):
     text = update.message.text
-    await update.message.reply_text(f"You wrote: {text}")
+   
+
+    openai_instance = OpenAI(openai_api_key=api_key)
+    llm = OpenAI(openai_api_key=api_key, temperature=0)
+
+    tools = load_tools(["google-serper"], llm=llm, serper_api_key=serper_api_key)
+    agent = initialize_agent(
+        tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True
+    )
+    response = agent.run(f"ответь на этот вопрос с приведенными исследованиями {text}")
+    print(response)
+    await update.message.reply_text(f"{text}")
     return ConversationHandler.END
 
 async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -328,22 +350,23 @@ def main():
     application = Application.builder().token("7174365563:AAEu4QAEYmMRxfqw0Hmqj5DejOee0hEV8TI").build()
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('start', start)],
-        states={
-            START_CHOICE: [CallbackQueryHandler(callback_query_handler)],
-            QUESTION_1: [CallbackQueryHandler(callback_query_handler)],
-            QUESTION_2: [CallbackQueryHandler(callback_query_handler)],
-            QUESTION_3: [CallbackQueryHandler(callback_query_handler)],
-            QUESTION_4: [CallbackQueryHandler(callback_query_handler)],
-            QUESTION_5: [CallbackQueryHandler(callback_query_handler)],
-            HELP: [CallbackQueryHandler(callback_query_handler)],
-            RESULT: [CallbackQueryHandler(callback_query_handler)],
-            MENU: [CallbackQueryHandler(callback_query_handler)]
-        },
-        fallbacks=[CommandHandler('cancel', start)]
-    )
-    
+            states={
+                START_CHOICE: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                QUESTION_1: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                QUESTION_2: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                QUESTION_3: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                QUESTION_4: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                QUESTION_5: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                HELP: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                RESULT: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)],
+                MENU: [CallbackQueryHandler(callback_query_handler),MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message)]
+            },
+            fallbacks=[CommandHandler('cancel', start)]
+        )
+        
     application.add_handler(conv_handler)
     application.add_handler(CallbackQueryHandler(callback_query_handler))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))  # Handle all other text messages globally
     # application.add_job(send_notifications, 'interval', seconds=130, args=[application.bot])
     # application.start()
     
