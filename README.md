@@ -3,7 +3,7 @@
 ## Команда
 - `Артем-Дариус Вебер` - Fullstack (back, front), main track - ML
 
-Реализовал сервисы: [ai_auto_job_agent](/ai_auto_job_agent), [ai_bot_interface](/ai_bot_interface), [feedback_analysis_service](/feedback_analysis_service), [feedback_job_processor](/feedback_job_processor), монорепа [weather_platform](/weather_platform)
+Реализовал сервисы: [ai_auto_job_agent](/ai_auto_job_agent), [ai_bot_interface](/ai_bot_interface), [feedback_analysis_service](/feedback_analysis_service), [feedback_job_processor](/feedback_job_processor), монорепа [weather_platform](/weather_platform), [sc-messenger](/sc-messenger)
 
 - `Юрий Санкин` - Backend
 
@@ -49,12 +49,22 @@
 ![feedback_jobs.png](assets%2Ffeedback_jobs.png)
 
 ### 6. [project](/project) - Сервис Backend реализующий ядро бизнес-логики приложения.
+
+![back1.jpeg](assets%2Fback1.jpeg)
+![back2.jpeg](assets%2Fback2.jpeg)
+![back3.jpeg](assets%2Fback3.jpeg)
+
 ### 7. монорепа [weather_platform](/weather_platform) - Монорепа, содержащая **11 сервисов** для работы системы сбора погодных условий.
 
 ![weather_app.png](assets%2Fweather_app.png)
 ![sensor_app.png](assets%2Fsensor_app.png)
 ![platoform_architecture.png](assets%2Fplatoform_architecture.png)
 
-### 8.. [ost_analitics](/ost_analitics) - Сервис автономного анализа данных, за основу использован [repo](https://github.com/Animadversio/GPT-Auto-Data-Analytics?tab=readme-ov-file)
+### 8. [ost_analitics](/ost_analitics) - Сервис автономного анализа данных, за основу использован [repo](https://github.com/Animadversio/GPT-Auto-Data-Analytics?tab=readme-ov-file)
 
 ![include_repo.png](assets%2Finclude_repo.png)
+
+### 9. [sc-messenger](/sc-messenger) - Сервис реализующий Мессенжер
+
+![messanger.png](assets%2Fmessanger.png)
+![messanger2.png](assets%2Fmessanger2.png)
