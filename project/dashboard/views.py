@@ -1,3 +1,5 @@
+from itertools import chain
+
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -93,29 +95,22 @@ class GeneralViewSet(viewsets.ModelViewSet):
     queryset = General.objects.all()
     serializer_class = GeneralSerializer
 
+    def get_queryset(self):
+        beach_queryset = Beach.objects.all()
+        hostel_queryset = Hostel.objects.all()
+        travel_queryset = Travel.objects.all()
+        valley_queryset = Valley.objects.all()
+        combined_queryset = list(chain(beach_queryset, hostel_queryset, travel_queryset, valley_queryset))
+        return combined_queryset
 
     @action(detail=True, methods=['get'], url_path='detail')
     def detail_view(self, request, pk):
         """ЭТО ОЧЕНЬ ПЛОХАЯ АРХИТЕКТУРА"""
-        if Travel.objects.filter(pk=pk).exists():
-            travel = Travel.objects.get(pk=pk)
-            serializer = TravelSerializer(travel)
-        elif Facility.objects.filter(pk=pk).exists():
-            facility = Facility.objects.get(pk=pk)
-            serializer = FacilitySerializer(facility)
-        elif Valley.objects.filter(pk=pk).exists():
-            valley = Valley.objects.get(pk=pk)
-            serializer = ValleySerializer(valley)
-        elif Hostel.objects.filter(pk=pk).exists():
-            hostel = Hostel.objects.get(pk=pk)
-            serializer = HostelSerializer(hostel)
-        elif Beach.objects.filter(pk=pk).exists():
-            beach = Beach.objects.get(pk=pk)
-            serializer = BeachSerializer(beach)
-        else:
-            event = Event.objects.get(pk=pk)
-            serializer = EventSerializer(event)
-        return Response(serializer.data)
+        serializer = self.serializer_class(self.queryset.get(pk=pk))
+        return Response({
+            'general': serializer.data
+        })
+
 
 class TravelViewSet(viewsets.ModelViewSet):
     queryset = Travel.objects.all()
