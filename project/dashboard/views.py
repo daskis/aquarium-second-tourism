@@ -96,11 +96,12 @@ class GeneralViewSet(viewsets.ModelViewSet):
     serializer_class = GeneralSerializer
 
     def get_queryset(self):
+        facility_queryset = Facility.objects.all()
         beach_queryset = Beach.objects.all()
         hostel_queryset = Hostel.objects.all()
         travel_queryset = Travel.objects.all()
         valley_queryset = Valley.objects.all()
-        combined_queryset = list(chain(beach_queryset, hostel_queryset, travel_queryset, valley_queryset))
+        combined_queryset = list(chain( facility_queryset, beach_queryset, hostel_queryset, travel_queryset, valley_queryset))
         return combined_queryset
 
     @action(detail=True, methods=['get'], url_path='detail')
