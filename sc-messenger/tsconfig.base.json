@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@messenger/api": ["libs/api/index.ts"],
+      "@messenger/layouts": ["libs/layouts/src/index.ts"],
+      "@messenger/pages": ["libs/pages/src/index.ts"],
+      "@messenger/prisma-clients": ["libs/prisma-clients/index.ts"],
+      "@messenger/prisma-clients/*": ["libs/prisma-clients/*"],
+      "@messenger/prisma-generator": ["libs/prisma-generator/src/index.ts"],
+      "@messenger/provider": ["libs/provider/src/index.ts"],
+      "@messenger/stickers": ["libs/stickers/src/index.ts"],
+      "@messenger/ui": ["libs/ui/src/index.ts"],
+      "@messenger/ui-modules": ["libs/ui-modules/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

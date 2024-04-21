@@ -1,0 +1,52 @@
+version: '3.7'
+services:
+  msg-database-chats:
+    image: postgres:12.1-alpine
+    container_name: asc_messenger_chats_db
+    restart: always
+    ports:
+      - ${CHAT_DB_PORT}:5432
+    volumes:
+      - ./datachat:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${CHAT_DB}
+      POSTGRES_USER: ${CHAT_DB_USER}
+      POSTGRES_PASSWORD: ${CHAT_DB_PASSWORD}
+    networks:
+      - msgs-database
+
+  msg-database-messages:
+    image: postgres:12.1-alpine
+    container_name: asc_messenger_messages_db
+    restart: always
+    ports:
+      - ${MESSAGE_DB_PORT}:5432
+    volumes:
+      - ./datamsgs:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${MESSAGE_DB}
+      POSTGRES_USER: ${MESSAGE_DB_USER}
+      POSTGRES_PASSWORD: ${MESSAGE_DB_PASSWORD}
+    networks:
+      - msgs-database
+
+  msg-database-profiles:
+    image: postgres:12.1-alpine
+    container_name: asc_messenger_profiles_db
+    restart: always
+    ports:
+      - ${PROFILE_DB_PORT}:5432
+    volumes:
+      - ./dataprofile:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${PROFILE_DB}
+      POSTGRES_USER: ${PROFILE_DB_USER}
+      POSTGRES_PASSWORD: ${PROFILE_DB_PASSWORD}
+    networks:
+      - msgs-database
+
+networks:
+  msgs-database:
+    external: false
+    name: asc_messenger_database
+    driver: bridge

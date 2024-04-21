@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../../node_modules/.prisma/messages-client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("MESSAGES_SOURCE_URL")
+}
+
+model Message {
+  uuid                    String   @id @default(uuid()) @db.VarChar(36)
+  createdAt               DateTime @default(now()) @db.Timestamp(6)
+  updatedAt               DateTime @updatedAt @db.Timestamp(6)
+  sendedInDate            String?                 // when created in another service (another microservice date/current createdAt) for SC LLA
+  creatorUUID             String                  @db.VarChar(36)
+  isDeleted               Boolean                 @default(false)
+
+  chatUUID                String                  @db.VarChar(36)
+
+  text                    String
+  type                    String                  // "user", "system" (like "user-change-name")
+  attachments             Attachment[]
+  activityUUID            String? @db.VarChar(36)
+
+  messageReplyUUID        String? @db.VarChar(36)
+}
+
+model Attachment {
+  uuid                    String   @id @default(uuid()) @db.VarChar(36)
+  createdAt               DateTime @default(now()) @db.Timestamp(6)
+  updatedAt               DateTime @updatedAt @db.Timestamp(6)
+  sendedInDate            String?                 // when created in another service (another microservice date/current createdAt) for SC LLA
+  creatorUUID             String                  @db.VarChar(36)
+  isDeleted               Boolean                 @default(false)
+
+  isAutoDetected          Boolean   @default(false) // if user send link on the file and query daimon auto-detected the context and store the file for quick-view
+  type                    String    // "photo", "video", "file", etc.
+  sourse                  String    // "local", "asc", "url", etc.
+  path                    String?   // if source === asc storage
+  url                     String?   // if source === url
+
+  message                 Message?   @relation(fields: [messageUUID], references: [uuid])
+  messageUUID             String?   @db.VarChar(36)
+}
