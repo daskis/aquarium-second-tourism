@@ -5,8 +5,6 @@ import mysql.connector
 from mysql.connector import Error
 import time
 
-db_host = "localhost"
-
 def ProcessTextDB(text, id=1):
     llm: LLM = G4FLLM(
         model=models.gpt_35_turbo,
@@ -33,7 +31,7 @@ def ProcessTextDB(text, id=1):
             f'{PROMPT} Создай график показывающий динамику востребованности туризма в Сочи, Россия используя примитивы div и style. ',
         ]
 
-        connection = mysql.connector.connect(host=db_host,
+        connection = mysql.connector.connect(host="hackdb.k-lab.su",
                                              database='laravel',
                                              user='sail',
                                              password='password')
