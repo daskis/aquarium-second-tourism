@@ -31,7 +31,7 @@ def ProcessTextDB(text, id=1):
             f'{PROMPT} Создай график показывающий динамику востребованности туризма в Сочи, Россия используя примитивы div и style. ',
         ]
 
-        connection = mysql.connector.connect(host="hackdb.k-lab.su",
+        connection = mysql.connector.connect(host="localhost",
                                              database='laravel',
                                              user='sail',
                                              password='password')
