@@ -104,6 +104,7 @@ class GeneralViewSet(viewsets.ModelViewSet):
         combined_queryset = list(chain( facility_queryset, beach_queryset, hostel_queryset, travel_queryset, valley_queryset))
         return combined_queryset
 
+
     @action(detail=True, methods=['get'], url_path='detail')
     def detail_view(self, request, pk):
         """ЭТО ОЧЕНЬ ПЛОХАЯ АРХИТЕКТУРА"""

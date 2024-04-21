@@ -3,9 +3,14 @@ from rest_framework import serializers
 
 
 class GeneralSerializer(serializers.ModelSerializer):
+    img = serializers.SerializerMethodField()
+    def get_img(self, obj):
+        return [image.image.url for image in obj.img.all()]
     class Meta:
         model = General
         fields = '__all__'
+
+
 
 
 class FacilitySerializer(serializers.ModelSerializer):
@@ -80,6 +85,8 @@ class HostelSerializer(serializers.ModelSerializer):
         model = Hostel
         fields = '__all__'
 class ImageSerializer(serializers.ModelSerializer):
+
+
     class Meta:
         model = Images
-        fields = '__all__'
+        fields = ['image']

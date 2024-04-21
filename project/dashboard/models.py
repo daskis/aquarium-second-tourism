@@ -8,7 +8,7 @@ class Owner(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
 
 class Images(models.Model):
-    image = models.ImageField(upload_to='img/', blank=True, null=True)
+    image = models.ImageField(upload_to='img/')
 
 class General(models.Model):
     "базовая модель для антона"
