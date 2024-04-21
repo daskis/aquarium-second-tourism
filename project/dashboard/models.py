@@ -8,7 +8,7 @@ class Owner(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.RESTRICT)
 
 class Images(models.Model):
-    image = models.ImageField(upload_to='img/', blank=True, null=True)
+    image = models.ImageField(upload_to='img/')
 
 class General(models.Model):
     "базовая модель для антона"
@@ -16,7 +16,7 @@ class General(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE, blank=True, null=True)
     description = models.TextField()
     date = models.DateField()
-    img = models.ManyToManyField(Images)
+    img = models.ManyToManyField(Images, blank=True, null=True)
     rating = models.FloatField()
 
     class Meta:
@@ -26,9 +26,8 @@ class General(models.Model):
         return self.name
 
 
-class Facility(models.Model):
+class Facility(General):
     "Интересные места для антона"
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
     coordinates = models.JSONField(default=dict)
 
     def clean_coordinates(self):
@@ -43,16 +42,14 @@ class Facility(models.Model):
 
 
 
-class Travel(models.Model):
+class Travel(General):
     "тур для антона"
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
     reviews = models.ManyToManyField("Review", blank=True, null=True)
     facilitys = models.ManyToManyField("Facility", blank=True)
 
 
-class Hostel(models.Model):
+class Hostel(General):
     "отели места"
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
     reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
@@ -67,9 +64,9 @@ class Hostel(models.Model):
             raise ValidationError("out if range for 'longitude'")
 
 
-class Valley(models.Model):
+class Valley(General):
     "парки"
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
+
     reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
@@ -84,9 +81,8 @@ class Valley(models.Model):
             raise ValidationError("out if range for 'longitude'")
 
 
-class Beach(models.Model):
+class Beach(General):
     "пляжи"
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
     reviews = models.ManyToManyField("Review", blank=True, null=True)
     coordinates = models.JSONField(default=dict)
 
@@ -101,12 +97,11 @@ class Beach(models.Model):
             raise ValidationError("out if range for 'longitude'")
 
 
-class Event(models.Model):
+class Event(General):
 
-    general = models.OneToOneField(General, on_delete=models.CASCADE)
-    name = models.CharField(max_length=100)
-    facility = models.ForeignKey("Facility", on_delete=models.CASCADE)
-
+    pass
+    # facility = models.ForeignKey("Facility", on_delete=models.CASCADE)
+    #
 
 class Service(models.Model):
     name = models.CharField(max_length=100)
