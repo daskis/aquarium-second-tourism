@@ -102,6 +102,7 @@ class GeneralViewSet(viewsets.ModelViewSet):
         travel_queryset = Travel.objects.all()
         valley_queryset = Valley.objects.all()
         combined_queryset = list(chain( facility_queryset, beach_queryset, hostel_queryset, travel_queryset, valley_queryset))
+        combined_queryset = sorted(combined_queryset, key=lambda x: x.rating, reverse=True)
         return combined_queryset
 
 
@@ -192,10 +193,16 @@ class ReviewViewSet(viewsets.ModelViewSet):
 class HostelViewSet(viewsets.ModelViewSet):
     queryset = Hostel.objects.all()
     serializer_class = HostelSerializer
+class QuestsViewSet(viewsets.ModelViewSet):
+    queryset = Quests.objects.all()
+    serializer_class = QuestsSerializer
+
 
 class ImagesListView(ListCreateAPIView):
     queryset = Images.objects.all()
     serializer_class = ImageSerializer
+
+
 
 
 

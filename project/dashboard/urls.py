@@ -19,8 +19,9 @@ router.register(r'reviews', views.ReviewViewSet)
 router.register(r'beach', views.BeachViewSet)
 router.register(r'valley', views.ValleyViewSet)
 router.register(r'hostel', views.HostelViewSet)
+router.register(r'quests', views.QuestsViewSet)
 
-app_name='dashboard'
+app_name = 'dashboard'
 urlpatterns = [
     # path('', views.base, name='base'),
     # path('login/', views.LoginUser.as_view(), name='login'),
@@ -31,6 +32,4 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/images-list', views.ImagesListView.as_view(), name='images-list'),
 
-
-
-    ]
+]

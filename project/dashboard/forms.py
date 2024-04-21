@@ -69,27 +69,27 @@ from .models import *
 #         }
 
 
-class ServiceForm(forms.ModelForm):
-    class Meta:
-        model = Service
-        fields = ['name', 'facility']
-        labels = {
-            'name': "Услуга",
-            'facility': "Точка",
-        }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-input'}),
-        }
-
-
-class ConsumerForm(forms.ModelForm):
-    class Meta:
-        model = Consumer
-        fields = ['name']
-        labels = {
-            'name': "Имя",
-        }
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-input'}),
-
-        }
+# class ServiceForm(forms.ModelForm):
+#     class Meta:
+#         model = Service
+#         fields = ['name', 'facility']
+#         labels = {
+#             'name': "Услуга",
+#             'facility': "Точка",
+#         }
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-input'}),
+#         }
+#
+#
+# class ConsumerForm(forms.ModelForm):
+#     class Meta:
+#         model = Consumer
+#         fields = ['name']
+#         labels = {
+#             'name': "Имя",
+#         }
+#         widgets = {
+#             'name': forms.TextInput(attrs={'class': 'form-input'}),
+#
+#         }
